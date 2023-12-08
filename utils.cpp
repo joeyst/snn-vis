@@ -20,3 +20,26 @@ float GetTolFactor(int n_fires) {
   float C     = 1.f;
   return (numer / denom) + C;
 }
+
+std::vector<float> GetOjaWeightChanges(const std::vector<float>& energies, const std::vector<float>& weights) {
+    // change = io - wo^2
+    float output = 0;
+    for (size_t i = 0; i < energies.size(); ++i) {
+        output += energies[i] * weights[i];
+    }
+
+    std::vector<float> strengs(energies.size());
+    std::vector<float> forgets(energies.size());
+
+    for (size_t i = 0; i < energies.size(); ++i) {
+        strengs[i] = energies[i] * output;
+        forgets[i] = weights[i] * (output * output);
+    }
+
+    std::vector<float> result(energies.size());
+    for (size_t i = 0; i < energies.size(); ++i) {
+        result[i] = strengs[i] + forgets[i];
+    }
+
+    return result;
+}
