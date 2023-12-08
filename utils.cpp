@@ -1,6 +1,7 @@
 
 #include "utils.h"
 #include "cstdlib"
+#include <random>
 
 std::pair<PointCoords3D, PointCoords3D> GetConnectionEndpoints(const PointCoords3D& start, const PointCoords3D& end, float segmentPercent) {
   PointCoords3D resultStart(3);
@@ -52,4 +53,11 @@ int NumberOfSetBits(uint32_t i) {
      i = (i + (i >> 4)) & 0x0F0F0F0F;        // groups of 8
      i *= 0x01010101;                        // horizontal sum of bytes
      return  i >> 24;               // return just that top byte (after truncating to 32-bit even when int is wider than uint32_t)
+}
+
+float RandomWeight() {
+  static std::random_device rd;
+  static std::default_random_engine generator(rd());
+  std::uniform_real_distribution<float> distribution(0.01f, 1.f);
+  return distribution(generator);
 }
