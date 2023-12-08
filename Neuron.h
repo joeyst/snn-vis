@@ -14,7 +14,7 @@ class Neuron {
   public:
     float energy;
     uint32_t _recvs; // Stores the most recent tick's fires. 
-    std::vector<std::vector<float>> synapses; // Up to 26 synapses. (Think of neuron as being center of 3x3x3 box.)
+    std::vector<float> synapses; // Up to 26 synapses. (Think of neuron as being center of 3x3x3 box.)
     uint32_t _recving_synapses; // Stores the curent active incoming synapses. 
     PointIds3D xyz;
 

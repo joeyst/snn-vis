@@ -4,7 +4,6 @@
 #include "config.h"
 
 Neuron::Neuron(float initialEnergy): energy(initialEnergy), _fires((unsigned short) 0) {
-  std::vector<float> synapses;
   for (int i = 0; i < 26; ++i) {
     synapses.push_back(RandomWeight());
   }
