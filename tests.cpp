@@ -3,6 +3,7 @@
 #include <vector>
 #include "ctest.h" 
 #include <iostream>
+#include "Block.h"
 
 #ifdef CTEST_ENABLE 
 
