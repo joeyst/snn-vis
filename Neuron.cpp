@@ -53,3 +53,15 @@ std::vector<PointIds3D> Neuron::GetNeighboringNeuronIds() {
   }
   return neighboring_neuron_ids;
 }
+
+void Neuron::SetNeuronRecvs(std::vector<Neuron*> senders) {
+  uint32_t recvs = 0;
+  for (std::size_t i = 0; i < senders.size(); i++) {
+    Neuron* current_neuron = senders[i];
+    if (current_neuron->IsFiring()) {
+      std::size_t current_neuron_index = this->GetSynapseIndex(current_neuron->xyz);
+      recvs |= ((std::size_t)1) << current_neuron_index;
+    }
+  }
+  this->_recvs = recvs;
+}

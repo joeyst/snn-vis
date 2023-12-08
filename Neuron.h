@@ -28,6 +28,7 @@ class Neuron {
     float GetTolFactor();
     std::size_t GetSynapseIndex(PointIds3D sender);
     std::vector<PointIds3D> GetNeighboringNeuronIds();
+    void SetNeuronRecvs(std::vector<Neuron*> senders);
 
   private:
     int NumberOfFires();
