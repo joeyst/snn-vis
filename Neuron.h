@@ -1,10 +1,11 @@
 
+#ifndef _NEURON_H
+#define _NEURON_H 
+
 #include <cstdint>
 #include <vector>
 #include "Point3D.h"
-
-#ifndef _NEURON_H
-#define _NEURON_H 
+#include "Synapse.h"
 
 class Neuron {
   /* 
