@@ -1,26 +1,42 @@
-
-# ADAPTED FROM: https://gist.github.com/wenchy/64db1636845a3da0c4c7
-
 CC := g++
 CFLAGS := -Wall -g
 TARGET := main
+TARGET_TEST := tests
+TEST_FLAGS := -DCTEST_ENABLE
 
-# $(wildcard *.cpp /xxx/xxx/*.cpp): get all .cpp files from the current directory and dir "/xxx/xxx/"
 SRCS := $(wildcard *.cpp)
-# $(patsubst %.cpp,%.o,$(SRCS)): substitute all ".cpp" file name strings to ".o" file name strings
-OBJS := $(patsubst %.cpp,%.o,$(SRCS))
+OBJS_MAIN := $(filter-out tests.o, $(patsubst %.cpp,%.o,$(SRCS)))
+OBJS_TESTS := $(filter-out main.o, $(patsubst %.cpp,%.o,$(SRCS)))
 
-all: $(TARGET)
-$(TARGET): $(OBJS)
+.SILENT:
+all: $(TARGET) $(TARGET_TEST)
+
+$(TARGET): $(OBJS_MAIN)
 	$(CC) -o $@ $^
+
+.SILENT:
 %.o: %.cpp
-	$(CC) $(CFLAGS) -c $<
+	$(CC) $(CFLAGS) $(TEST_FLAGS) -c $<
+
+.SILENT:
 clean:
-	rm *.o
-	rm main
+	rm -f *.o $(TARGET) $(TARGET_TEST)
+
+.SILENT:
 run:
 	make all
-	./main
+	./$(TARGET)
 	make clean
-	
-.PHONY: all clean
+
+.SILENT:
+test_bin: $(TARGET_TEST)
+$(TARGET_TEST): $(OBJS_TESTS)
+	$(CC) $(TEST_FLAGS) -o $@ $^
+
+.SILENT:
+test:
+	make test_bin --no-print-directory
+	-./$(TARGET_TEST)
+	make clean --no-print-directory
+
+.PHONY: all clean test
