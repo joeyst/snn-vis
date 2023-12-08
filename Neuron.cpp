@@ -3,7 +3,12 @@
 #include "utils.h"
 #include "config.h"
 
-Neuron::Neuron(float initialEnergy): energy(initialEnergy), _fires((unsigned short) 0) {}
+Neuron::Neuron(float initialEnergy): energy(initialEnergy), _fires((unsigned short) 0) {
+  std::vector<float> synapses;
+  for (int i = 0; i < 26; ++i) {
+    synapses.push_back(RandomWeight());
+  }
+}
 Neuron::Neuron(): energy(0.f), _fires((unsigned short) 0) {}
 
 int Neuron::NumberOfFires() {
