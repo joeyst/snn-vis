@@ -16,3 +16,7 @@ void Neuron::SetCurrentTickFire(bool did_fire) {
 bool Neuron::IsFiring() {
   return this->energy > NEURON_FIRE_THRESH;
 }
+
+float Neuron::GetTolFactor() {
+  return ::GetTolFactor(this->NumberOfFires());
+}
