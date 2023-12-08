@@ -24,9 +24,9 @@ clean:
 
 .SILENT:
 run:
-	make all
+	make all --no-print-directory 
 	./$(TARGET)
-	make clean
+	make clean --no-print-directory 
 
 .SILENT:
 test_bin: $(TARGET_TEST)
