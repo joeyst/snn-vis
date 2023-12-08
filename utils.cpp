@@ -2,15 +2,16 @@
 #include "utils.h"
 #include "cstdlib"
 
-std::pair<Point3D, Point3D> GetConnectionEndpoints(const Point3D& start, const Point3D& end, float segmentPercent) {
-    float xOffset = (end.x - start.x) * segmentPercent;
-    float yOffset = (end.y - start.y) * segmentPercent;
-    float zOffset = (end.z - start.z) * segmentPercent;
+std::pair<PointCoords3D, PointCoords3D> GetConnectionEndpoints(const PointCoords3D& start, const PointCoords3D& end, float segmentPercent) {
+  PointCoords3D resultStart(3);
+  PointCoords3D resultEnd(3);
 
-    Point3D newStart = {start.x + xOffset, start.y + yOffset, start.z + zOffset};
-    Point3D newEnd = {end.x - xOffset, end.y - yOffset, end.z - zOffset};
+  for (size_t i = 0; i < 3; ++i) {
+    resultStart[i] = start[i] + (end[i] - start[i]) * segmentPercent;
+    resultEnd[i]   = end[i]   - (end[i] - start[i]) * segmentPercent;
+  }
 
-    return std::make_pair(newStart, newEnd);
+  return std::make_pair(resultStart, resultEnd);
 }
 
 float GetTolFactor(int n_fires) {
