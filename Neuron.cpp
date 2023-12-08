@@ -65,3 +65,7 @@ void Neuron::SetNeuronRecvs(std::vector<Neuron*> senders) {
   }
   this->_recvs = recvs;
 }
+
+void Neuron::TickEnergy() {
+  this->energy = (1.f - ENERGY_DECAY_PROP) * this->energy;
+}
