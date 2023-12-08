@@ -22,11 +22,11 @@ class Neuron {
     void SetCurrentTickFire(bool did_fire);
     bool IsFiring();
     float GetTolFactor();
+    std::size_t GetSynapseIndex(PointIds3D sender);
 
   private:
     uint32_t _fires; 
     int NumberOfFires();
-    std::size_t GetSynapseIndex(PointIds3D sender);
 };
 
 #endif 

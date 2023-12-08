@@ -22,11 +22,21 @@ float Neuron::GetTolFactor() {
   return ::GetTolFactor(this->NumberOfFires());
 }
 
+#include <iostream>
 std::size_t Neuron::GetSynapseIndex(PointIds3D sender_xyz) {
   std::size_t SynapseIndex = 13;
   std::vector<int> Multipliers = { 1, 3, 9 };
   for (std::size_t i = 0; i < sender_xyz.size(); ++i) {
-    SynapseIndex += Multipliers[i] * (this->xyz[i] - sender_xyz[i]);
+    std::cout << "i: " << i << std::endl;
+    std::cout << "sender_xyz[i]: " << sender_xyz[i] << std::endl;
+    std::cout << "this->xyz[i]: " << this->xyz[i] << std::endl;
+    std::cout << "Multipliers[i]: " << Multipliers[i] << std::endl;
+    std::cout << "So, += " << Multipliers[i] * (sender_xyz[i] - this->xyz[i]) << std::endl;
+    SynapseIndex += Multipliers[i] * (sender_xyz[i] - this->xyz[i]);
+  }
+  // There isn't a synapse for the neuron to itself. 
+  if (SynapseIndex > 13) {
+    SynapseIndex--;
   }
   return SynapseIndex;
 }
