@@ -8,7 +8,7 @@
 #ifndef _UTILS_H
 #define _UTILS_H
 
-std::pair<PointCoords3D, PointCoords3D> GetConnectionEndpoints(const PointIds3D& start, const PointIds3D& end, float segmentPercent);
+std::pair<PointCoords3D, PointCoords3D> GetConnectionEndpoints(const PointCoords3D& start, const PointCoords3D& end, float segmentPercent);
 
 float GetTolFactor(int n_fires);
 std::vector<float> GetOjaWeightChanges(const std::vector<float>& energies, const std::vector<float>& weights); 
