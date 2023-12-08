@@ -21,3 +21,12 @@ bool Neuron::IsFiring() {
 float Neuron::GetTolFactor() {
   return ::GetTolFactor(this->NumberOfFires());
 }
+
+std::size_t Neuron::GetSynapseIndex(PointIds3D sender_xyz) {
+  std::size_t SynapseIndex = 13;
+  std::vector<int> Multipliers = { 1, 3, 9 };
+  for (std::size_t i = 0; i < sender_xyz.size(); ++i) {
+    SynapseIndex += Multipliers[i] * (this->xyz[i] - sender_xyz[i]);
+  }
+  return SynapseIndex;
+}
