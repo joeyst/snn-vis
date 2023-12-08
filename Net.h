@@ -12,6 +12,11 @@ class Net {
     std::unordered_map<PointIds3D, Neuron*, container_hash<PointIds3D>> neuron_id_map;
     std::vector<Neuron*> GetNeighboringNeurons(Neuron* neuron);
     //std::vector<Neuron*> GetOutgoingNeurons(Neuron* neuron);
+    void EnableNeuron(int x, int y, int z);
+
+  private:
+    bool HasNeuron(int x, int y, int z);
+    void ForceEnableNeuron(int x, int y, int z);
 };
 
 #endif

@@ -9,3 +9,19 @@ std::vector<Neuron*> Net::GetNeighboringNeurons(Neuron* neuron) {
   }
   return incoming_neurons;
 }
+
+void Net::EnableNeuron(int x, int y, int z) {
+  if (!HasNeuron(x, y, z)) {
+    ForceEnableNeuron(x, y, z);
+  }
+}
+
+bool Net::HasNeuron(int x, int y, int z) {
+  return neuron_id_map.find({x, y, z}) != neuron_id_map.end();
+}
+
+void Net::ForceEnableNeuron(int x, int y, int z) {
+  Neuron n = Neuron();
+  n.xyz = {x, y, z};
+  neuron_id_map[{x, y, z}] = &n;
+}
