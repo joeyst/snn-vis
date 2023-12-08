@@ -11,6 +11,7 @@ class Neuron {
   */
   public:
     Neuron(float initialEnergy);
+    Neuron();
     float energy;
     uint32_t _fires; 
     int NumberOfFires();
