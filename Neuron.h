@@ -17,22 +17,24 @@ class Neuron {
   public:
     float energy; // Current neuron energy. 
     uint32_t _recvs; // Stores the curent active incoming synapses. 
+    uint32_t _current_tick_recvs;
     PointIds3D xyz; // Neuron's XYZ indices. 
     std::vector<float> synapses; // Up to 26 synapses. (Think of neuron as being center of 3x3x3 box.)
 
   public:
     Neuron(float initialEnergy);
     Neuron();
-    void SetCurrentTickFire(bool did_fire);
     bool IsFiring();
     float GetTolFactor();
     std::size_t GetSynapseIndex(PointIds3D sender);
     std::vector<PointIds3D> GetNeighboringNeuronIds();
     void SetNeuronRecvs(std::vector<Neuron*> senders);
     void TickEnergy();
+    void TickFire();
 
   private:
     int NumberOfFires();
+    void SetCurrentTickFire(bool did_fire);
   };
 
 #endif 

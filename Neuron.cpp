@@ -63,9 +63,13 @@ void Neuron::SetNeuronRecvs(std::vector<Neuron*> senders) {
       recvs |= ((std::size_t)1) << current_neuron_index;
     }
   }
-  this->_recvs = recvs;
+  this->_current_tick_recvs = recvs;
 }
 
 void Neuron::TickEnergy() {
   this->energy = (1.f - ENERGY_DECAY_PROP) * this->energy;
+}
+
+void Neuron::TickFire() {
+  SetCurrentTickFire(IsFiring());
 }
