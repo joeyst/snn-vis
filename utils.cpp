@@ -27,17 +27,13 @@ std::vector<float> GetOjaWeightChanges(const std::vector<float>& energies, const
     for (size_t i = 0; i < energies.size(); ++i) {
         output += energies[i] * weights[i];
     }
-    // output = output / (float)energies.size();
-    // output = std::max(0.f, output);
 
     std::vector<float> strengs(energies.size());
     std::vector<float> forgets(energies.size());
 
     for (size_t i = 0; i < energies.size(); ++i) {
         strengs[i] = energies[i] * output;
-        //strengs[i] = std::max(0.f, strengs[i]);
         forgets[i] = weights[i] * (output * output);
-        //forgets[i] = std::max(0.f, forgets[i]);
     }
 
     std::vector<float> result(energies.size());
