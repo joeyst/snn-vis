@@ -3,12 +3,12 @@
 #include "utils.h"
 #include "config.h"
 
-Neuron::Neuron(float initialEnergy): energy(initialEnergy), _fires((unsigned short) 0) {
+Neuron::Neuron(float initialEnergy): _fires((unsigned short) 0), energy(initialEnergy) {
   for (int i = 0; i < 26; ++i) {
     synapses.push_back(RandomWeight());
   }
 }
-Neuron::Neuron(): energy(0.f), _fires((unsigned short) 0) {}
+Neuron::Neuron(): _fires((unsigned short) 0), energy(0.f) {}
 
 int Neuron::NumberOfFires() {
   return NumberOfSetBits(this->_fires);
