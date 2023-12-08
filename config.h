@@ -10,5 +10,6 @@ const float LEARNING_RATE      = 0.01f;
 
 const float NEURON_SIZE        = 1.f;
 const float NEURON_SPACING     = 0.5f;
+const float NEURON_TOTAL_DIST  = NEURON_SIZE + NEURON_SPACING;
 
 #endif 

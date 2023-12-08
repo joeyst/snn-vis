@@ -8,8 +8,6 @@
 #ifndef _UTILS_H
 #define _UTILS_H
 
-
-
 std::pair<Point3D, Point3D> GetConnectionEndpoints(const Point3D& start, const Point3D& end, float segmentPercent); 
 
 float GetTolFactor(int n_fires);
