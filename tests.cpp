@@ -5,6 +5,7 @@
 #include <iostream>
 #include "Block.h"
 #include "Neuron.h"
+#include "Net.h"
 
 #ifdef CTEST_ENABLE 
 
