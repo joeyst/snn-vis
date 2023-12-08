@@ -38,3 +38,18 @@ std::size_t Neuron::GetSynapseIndex(PointIds3D sender_xyz) {
   }
   return SynapseIndex;
 }
+
+std::vector<PointIds3D> Neuron::GetNeighboringNeuronIds() {
+  std::vector<PointIds3D> neighboring_neuron_ids;
+  for (int x = -1; x < 2; ++x) {
+    for (int y = -1; y < 2; ++y) {
+      for (int z = -1; z < 2; ++z) {
+        PointIds3D neighboring_xyz = { this->xyz[0] + x, this->xyz[1] + y, this->xyz[2] + z };
+        if (neighboring_xyz != this->xyz) {
+          neighboring_neuron_ids.push_back(neighboring_xyz);
+        }
+      }
+    }
+  }
+  return neighboring_neuron_ids;
+}
