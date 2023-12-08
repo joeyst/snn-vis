@@ -13,6 +13,7 @@ class Net {
     std::vector<Neuron*> GetNeighboringNeurons(Neuron* neuron);
     //std::vector<Neuron*> GetOutgoingNeurons(Neuron* neuron);
     void EnableNeuron(int x, int y, int z);
+    void EnableSynapse(int x1, int y1, int z1, int x2, int y2, int z2);
 
   private:
     bool HasNeuron(int x, int y, int z);
