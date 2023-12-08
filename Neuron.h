@@ -12,4 +12,5 @@ class Neuron {
     uint32_t _fires; 
     int NumberOfFires();
     void SetCurrentTickFire(bool did_fire);
+    bool IsFiring();
 };
