@@ -11,4 +11,5 @@ class Neuron {
     float energy;
     uint32_t _fires; 
     int NumberOfFires();
+    void SetCurrentTickFire(bool did_fire);
 };

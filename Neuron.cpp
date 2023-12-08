@@ -7,3 +7,7 @@ Neuron::Neuron(float initialEnergy): energy(initialEnergy), _fires((unsigned sho
 int Neuron::NumberOfFires() {
   return NumberOfSetBits(this->_fires);
 }
+
+void Neuron::SetCurrentTickFire(bool did_fire) {
+  this->_fires = (this->_fires << 1) | (did_fire ? 1 : 0);
+}
