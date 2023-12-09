@@ -13,18 +13,20 @@ typedef CircularBuffer<bool> Fires;
 class Neuron {
   /* 
   energy | Current energy of neuron. 
-  _fires | Each bit represents whether the neuron fired during the last 32 ticks. 
+  fires | Last N ticks bools. 
+  fired | If firing during current tick. 
   */
   public:
-    float energy; // Current neuron energy. 
+    float energy; 
     Fires fires;
+    bool fired; 
     std::vector<Synapse*> synapses;
-    PointIds3D xyz; // Neuron's XYZ indices. 
+    PointIds3D xyz; 
 
   public:
     Neuron(float initialEnergy);
     Neuron();
-    bool IsFiring();
+    bool EnergyExceedsFiringThreshold();
     void DecayEnergy();
     void TickFire();
 

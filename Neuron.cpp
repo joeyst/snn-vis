@@ -15,7 +15,7 @@ int Neuron::NumberOfFires() {
   }
 }
 
-bool Neuron::IsFiring() {
+bool Neuron::EnergyExceedsFiringThreshold() {
   return this->energy > NEURON_FIRE_THRESH;
 }
 
@@ -28,5 +28,5 @@ void Neuron::DecayEnergy() {
 }
 
 void Neuron::TickFire() {
-  fires.Push(IsFiring());
+  fires.Push(EnergyExceedsFiringThreshold());
 }
