@@ -48,3 +48,9 @@ bool Neuron::JustFired() {
 float Neuron::GetTolAdjustedEnergyReceived() {
   return GetRawEnergyReceived() * GetTolFactor();
 }
+
+void Neuron::SetFired() {
+  if (energy + GetTolAdjustedEnergyReceived()) {
+    fired = true;
+  }
+}
