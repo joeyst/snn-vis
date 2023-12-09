@@ -6,6 +6,7 @@
 #include "Block.h"
 #include "Neuron.h"
 #include "Net.h"
+#include "NetBuilder.h"
 
 #ifdef CTEST_ENABLE 
 
