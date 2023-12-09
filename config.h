@@ -10,6 +10,7 @@ const int   NEURONS_PER_LAYER  = 4;
 const float LEARNING_RATE      = 0.01f;
 const float ENERGY_DECAY_PROP  = 0.1f;
 const std::size_t N_TICKS_TO_TRACK = 32;
+const std::size_t N_LAST_WEIGHTS_TO_STORE = 32;
 
 const float NEURON_SIZE        = 1.f;
 const float NEURON_SPACING     = 0.5f;

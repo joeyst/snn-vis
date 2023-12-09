@@ -22,6 +22,8 @@ void Net::EnableSynapse(PointIds3D xyz1, PointIds3D xyz2) {
   EnableNeuron(xyz2);
   Neuron* sender = neuron_id_map[xyz1];
   Neuron* receiver = neuron_id_map[xyz2];
+  Synapse synapse = Synapse(*sender, *receiver);
+  receiver->AddSynapse(synapse);
 }
 
 void Net::Tick() {

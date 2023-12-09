@@ -32,6 +32,7 @@ class Neuron {
     Neuron();
     void UpdateSynapses();
     void UpdateEnergy();
+    void AddSynapse(Synapse& synapse);
 
   private:
     bool EnergyExceedsFiringThreshold();

@@ -83,3 +83,7 @@ void Neuron::UpdateSynapses() {
   SetFired();
   ApplyOjas();
 }
+
+void Neuron::AddSynapse(Synapse& synapse) {
+  synapses.push_back(&synapse);
+}

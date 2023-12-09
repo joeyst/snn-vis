@@ -16,7 +16,8 @@ class Synapse {
     Weights weights;
 
   public:
-    Synapse(Neuron& from, Neuron& to, std::size_t size);
+    Synapse(Neuron& from, Neuron& to, std::size_t n_last_weights_to_store);
+    Synapse(Neuron& from, Neuron& to);
     float GetWeight();
     void  SetWeight(float weight);
 };
