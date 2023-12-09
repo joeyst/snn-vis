@@ -37,6 +37,7 @@ class Neuron {
 
     float GetRawEnergyReceived();
     bool JustFired();
+    float GetTolAdjustedEnergyReceived();
   };
 
 #endif 

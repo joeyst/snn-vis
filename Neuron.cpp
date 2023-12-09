@@ -44,3 +44,7 @@ float Neuron::GetRawEnergyReceived() {
 bool Neuron::JustFired() {
   return this->fires.Peek();
 }
+
+float Neuron::GetTolAdjustedEnergyReceived() {
+  return GetRawEnergyReceived() * GetTolFactor();
+}
