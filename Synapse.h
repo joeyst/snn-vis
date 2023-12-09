@@ -3,7 +3,6 @@
 #define _SYNAPSE_H
 
 #include <vector>
-#include "Neuron.h"
 #include "CircularBuffer.h"
 
 class Neuron;

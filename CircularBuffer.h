@@ -26,6 +26,11 @@ public:
         return buffer[currentIndex];
     }
 
+    // Function to get the vector. 
+    std::vector<T> GetVector() {
+        return buffer;
+    }
+
 private:
     std::vector<T> buffer;
     std::size_t currentIndex;
