@@ -25,5 +25,10 @@ void Net::EnableSynapse(PointIds3D xyz1, PointIds3D xyz2) {
 }
 
 void Net::Tick() {
-
+  for (auto kv : neuron_id_map) {
+    kv.second->UpdateSynapses();
+  }
+  for (auto kv : neuron_id_map) {
+    kv.second->UpdateEnergy();
+  }
 }
