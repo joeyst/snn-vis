@@ -32,3 +32,5 @@ void Net::Tick() {
     kv.second->UpdateEnergy();
   }
 }
+
+Net::Net() {}

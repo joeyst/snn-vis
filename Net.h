@@ -13,6 +13,7 @@ class Net {
     void EnableNeuron(PointIds3D xyz);
     void EnableSynapse(PointIds3D xyz1, PointIds3D xyz2);
     void Tick();
+    Net();
 
   private:
     bool HasNeuron(PointIds3D xyz);

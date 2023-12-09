@@ -61,3 +61,28 @@ float RandomWeight() {
   std::uniform_real_distribution<float> distribution(0.01f, 1.f);
   return distribution(generator);
 }
+
+std::vector<PointIds3D> GetCoordsInRectangularPrism(PointIds3D start, PointIds3D dxyz) {
+  std::vector<PointIds3D> result(0);
+
+  bool x_is_positive = dxyz[0] > 0;
+  bool y_is_positive = dxyz[1] > 0;
+  bool z_is_positive = dxyz[2] > 0;
+
+  int x_factor = x_is_positive ? 1 : -1;
+  int y_factor = y_is_positive ? 1 : -1;
+  int z_factor = z_is_positive ? 1 : -1;
+
+  for (int x = 0; x != dxyz[0]; x += x_factor) {
+    for (int y = 0; y != dxyz[1]; y += y_factor) {
+      for (int z = 0; z != dxyz[2]; z += z_factor) {
+        PointIds3D coords(3);
+        coords[0] = start[0] + x;
+        coords[1] = start[1] + y;
+        coords[2] = start[2] + z;
+        result.push_back(coords);
+      }
+    }
+  }
+  return result;
+}

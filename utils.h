@@ -18,4 +18,6 @@ int NumberOfSetBits(uint32_t i);
 
 float RandomWeight(); // Returns random weight in range [0.01, 1]. 
 
+std::vector<PointIds3D> GetCoordsInRectangularPrism(PointIds3D start, PointIds3D dxyz);
+
 #endif 
