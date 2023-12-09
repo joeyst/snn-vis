@@ -40,6 +40,8 @@ class Neuron {
     float GetTolAdjustedEnergyReceived();
 
     void SetFired();
+    float Output();
+    void ApplyOjas();
   };
 
 #endif 

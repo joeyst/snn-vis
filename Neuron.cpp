@@ -54,3 +54,21 @@ void Neuron::SetFired() {
     fired = true;
   }
 }
+
+float Neuron::Output() {
+  if (fired) {
+    return 1.f;
+  }
+  else {
+    return 0.f;
+  }
+}
+
+void Neuron::ApplyOjas() {
+  for (auto synapse : synapses) {
+    float streng = synapse->from.JustFired() * Output();
+    float forget = synapse->GetWeight() * Output() * Output();
+    float change = (streng - forget) * LEARNING_RATE;
+    synapse->SetWeight(synapse->GetWeight() + change);
+  }
+}
