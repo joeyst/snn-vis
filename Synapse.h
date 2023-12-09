@@ -19,7 +19,7 @@ class Synapse {
   public:
     Synapse(Neuron& from, Neuron& to, std::size_t size);
     float GetWeight();
-    void  UpdateWeight(float in, float out);
+    void  SetWeight(float weight);
 };
 
 #endif
