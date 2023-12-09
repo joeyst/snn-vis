@@ -15,6 +15,10 @@ class Neuron {
   energy | Current energy of neuron. 
   fires | Last N ticks bools. 
   fired | If firing during current tick. 
+
+  STEPS: 
+  1. Update all synapses, with UpdateSynapses. 
+  2. Update all energies, with UpdateEnergy. 
   */
   public:
     float energy; 
@@ -26,11 +30,13 @@ class Neuron {
   public:
     Neuron(float initialEnergy);
     Neuron();
-    bool EnergyExceedsFiringThreshold();
-    void DecayEnergy();
-    void TickFire();
+    void UpdateSynapses();
+    void UpdateEnergy();
 
   private:
+    bool EnergyExceedsFiringThreshold();
+    void DecayEnergy();
+
     int NumberOfFires();
     void SetCurrentTickFire(bool did_fire);
     float GetTolFactor();

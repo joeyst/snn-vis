@@ -27,8 +27,14 @@ void Neuron::DecayEnergy() {
   this->energy = (1.f - ENERGY_DECAY_PROP) * this->energy;
 }
 
-void Neuron::TickFire() {
-  fires.Push(EnergyExceedsFiringThreshold());
+void Neuron::UpdateEnergy() {
+  fires.Push(fired);
+  if (fired) {
+    energy = 0.f;
+  }
+  else {
+    DecayEnergy();
+  }
 }
 
 float Neuron::GetRawEnergyReceived() {
@@ -71,4 +77,9 @@ void Neuron::ApplyOjas() {
     float change = (streng - forget) * LEARNING_RATE;
     synapse->SetWeight(synapse->GetWeight() + change);
   }
+}
+
+void Neuron::UpdateSynapses() {
+  SetFired();
+  ApplyOjas();
 }
