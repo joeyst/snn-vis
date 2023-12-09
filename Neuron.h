@@ -34,6 +34,9 @@ class Neuron {
     int NumberOfFires();
     void SetCurrentTickFire(bool did_fire);
     float GetTolFactor();
+
+    float GetRawEnergyReceived();
+    bool JustFired();
   };
 
 #endif 

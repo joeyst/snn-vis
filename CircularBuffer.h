@@ -22,7 +22,7 @@ public:
     }
 
     // Function to get current element. 
-    T& Peek() {
+    T Peek() {
         return buffer[currentIndex];
     }
 

@@ -30,3 +30,17 @@ void Neuron::DecayEnergy() {
 void Neuron::TickFire() {
   fires.Push(EnergyExceedsFiringThreshold());
 }
+
+float Neuron::GetRawEnergyReceived() {
+  float e = 0.f;
+  for (auto synapse : synapses) {
+    if (synapse->from.JustFired()) {
+      e += synapse->GetWeight();
+    }
+  }
+  return e;
+}
+
+bool Neuron::JustFired() {
+  return this->fires.Peek();
+}
